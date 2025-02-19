@@ -1,4 +1,3 @@
-
 /* cicada_water.js */
 
 const ExpBData = {
@@ -7,7 +6,6 @@ const ExpBData = {
     targetAudio: "results/cicada-water/sounds/target.wav",
     targetImage: "results/cicada-water/figs/target.png",
   
-    // Example: Subset2 has param0 + param2
     otData: [
       {
         type: "Exact OT",
@@ -29,7 +27,7 @@ const ExpBData = {
       },
       {
         type: "Exact OT",
-        interpolation:" 50%",
+        interpolation: "50%",
         regularization: "-",
         timelimiting: "-",
         audioUrl: "results/cicada-water/sounds/cicada_water_exact_ot_interpolation_50.wav",
@@ -56,7 +54,6 @@ const ExpBData = {
       },
     ],
   
-    // Example: Subset1 has param0, param1, param2, param3
     uotData: [
       {
         type: "UOT + Structured Cost Matrix",

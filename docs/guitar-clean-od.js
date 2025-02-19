@@ -1,4 +1,3 @@
-
 /* clean_od.js */
 
 const ExpCData = {
@@ -7,7 +6,6 @@ const ExpCData = {
     targetAudio: "results/guitar-clean-od/sounds/target.wav",
     targetImage: "results/guitar-clean-od/figs/target.png",
   
-    // Example: Subset2 has param0 + param2
     otData: [
       {
         type: "Exact OT",
@@ -29,7 +27,7 @@ const ExpCData = {
       },
       {
         type: "Exact OT",
-        interpolation:" 50%",
+        interpolation: "50%",
         regularization: "-",
         timelimiting: "-",
         audioUrl: "results/guitar-clean-od/sounds/clean_od_exact_ot_interpolation_50.wav",
@@ -56,7 +54,6 @@ const ExpCData = {
       },
     ],
   
-    // Example: Subset1 has param0, param1, param2, param3
     uotData: [
       {
         type: "UOT + Structured Cost Matrix",

@@ -1,4 +1,3 @@
-
 /* piano_guitar.js */
 
 const ExpAData = {
@@ -7,7 +6,6 @@ const ExpAData = {
     targetAudio: "results/piano-guitar/sounds/target.wav",
     targetImage: "results/piano-guitar/figs/target.png",
   
-    // Example: Subset2 has param0 + param2
     otData: [
       {
         type: "Exact OT",
@@ -29,7 +27,7 @@ const ExpAData = {
       },
       {
         type: "Exact OT",
-        interpolation:" 50%",
+        interpolation: "50%",
         regularization: "-",
         timelimiting: "-",
         audioUrl: "results/piano-guitar/sounds/piano_guitar_exact_ot_interpolation_50.wav",
@@ -56,7 +54,6 @@ const ExpAData = {
       },
     ],
   
-    // Example: Subset1 has param0, param1, param2, param3
     uotData: [
       {
         type: "UOT + Structured Cost Matrix",

@@ -1,4 +1,3 @@
-
 /* piano_water.js */
 
 const ExpFData = {
@@ -7,7 +6,6 @@ const ExpFData = {
     targetAudio: "results/piano-water/sounds/target.wav",
     targetImage: "results/piano-water/figs/target.png",
   
-    // Example: Subset2 has param0 + param2
     otData: [
       {
         type: "Exact OT",
@@ -29,7 +27,7 @@ const ExpFData = {
       },
       {
         type: "Exact OT",
-        interpolation:" 50%",
+        interpolation: "50%",
         regularization: "-",
         timelimiting: "-",
         audioUrl: "results/piano-water/sounds/piano_water_exact_ot_interpolation_50.wav",
@@ -56,7 +54,6 @@ const ExpFData = {
       },
     ],
   
-    // Example: Subset1 has param0, param1, param2, param3
     uotData: [
       {
         type: "UOT + Structured Cost Matrix",

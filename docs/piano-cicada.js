@@ -1,4 +1,3 @@
-
 /* piano_cicada.js */
 
 const ExpEData = {
@@ -7,7 +6,6 @@ const ExpEData = {
     targetAudio: "results/piano-cicada/sounds/target.wav",
     targetImage: "results/piano-cicada/figs/target.png",
   
-    // Example: Subset2 has param0 + param2
     otData: [
       {
         type: "Exact OT",
@@ -29,7 +27,7 @@ const ExpEData = {
       },
       {
         type: "Exact OT",
-        interpolation:" 50%",
+        interpolation: "50%",
         regularization: "-",
         timelimiting: "-",
         audioUrl: "results/piano-cicada/sounds/piano_cicada_exact_ot_interpolation_50.wav",
@@ -56,7 +54,6 @@ const ExpEData = {
       },
     ],
   
-    // Example: Subset1 has param0, param1, param2, param3
     uotData: [
       {
         type: "UOT + Structured Cost Matrix",

@@ -1,4 +1,3 @@
-
 /* piano_a_c.js */
 
 const ExpDData = {
@@ -6,8 +5,7 @@ const ExpDData = {
     sourceImage: "results/piano-a-c/figs/source.png",
     targetAudio: "results/piano-a-c/sounds/target.wav",
     targetImage: "results/piano-a-c/figs/target.png",
-  
-    // Example: Subset2 has param0 + param2
+    
     otData: [
       {
         type: "Exact OT",
@@ -29,7 +27,7 @@ const ExpDData = {
       },
       {
         type: "Exact OT",
-        interpolation:" 50%",
+        interpolation: "50%",
         regularization: "-",
         timelimiting: "-",
         audioUrl: "results/piano-a-c/sounds/piano_a_c_exact_ot_interpolation_50.wav",
@@ -56,7 +54,6 @@ const ExpDData = {
       },
     ],
   
-    // Example: Subset1 has param0, param1, param2, param3
     uotData: [
       {
         type: "UOT + Structured Cost Matrix",
