@@ -1,6 +1,6 @@
 // Example arrays for *all* experiments:
 const interpolationSteps = [0, 25, 50, 75, 100];
-const regSteps = [10, 1, 0.01, 1e-6];
+const regSteps = [1e-6, 0.01, 1, 10];
 const timeSteps = [0, 5, 15];
 
 /** Utility: scroll to top */
@@ -537,6 +537,81 @@ function initExp7() {
   updateMethod2();
 }
 
+function initExp8() {
+  // Source / Target
+  document.getElementById("exp8-source-img").src = ExpHData.sourceImage;
+  document.getElementById("exp8-source-audio").src = ExpHData.sourceAudio;
+  document.getElementById("exp8-target-img").src = ExpHData.targetImage;
+  document.getElementById("exp8-target-audio").src = ExpHData.targetAudio;
+
+  // Method 1
+  const m1InterpSlider = document.getElementById("exp8-m1-interp");
+  const m1InterpVal    = document.getElementById("exp8-m1-interp-val");
+  const m1Img          = document.getElementById("exp8-method1-img");
+  const m1Audio        = document.getElementById("exp8-method1-audio");
+
+  function updateMethod1() {
+    const idx = parseInt(m1InterpSlider.value, 10);
+    const interpStr = interpolationSteps[idx] + "%";
+    m1InterpVal.textContent = interpStr;
+    
+    const entry = ExpHData.otData.find(o => o.interpolation === interpStr);
+    if (entry) {
+      m1Img.src   = entry.imageUrl;
+      m1Audio.src = entry.audioUrl;
+    } else {
+      m1Img.src   = "";
+      m1Audio.src = "";
+    }
+  }
+  m1InterpSlider.addEventListener("input", updateMethod1);
+
+  // Method 2
+  const m2InterpSlider = document.getElementById("exp8-m2-interp");
+  const m2InterpVal    = document.getElementById("exp8-m2-interp-val");
+  const m2RegSlider    = document.getElementById("exp8-m2-reg");
+  const m2RegVal       = document.getElementById("exp8-m2-reg-val");
+  const m2TimeSlider   = document.getElementById("exp8-m2-time");
+  const m2TimeVal      = document.getElementById("exp8-m2-time-val");
+  const m2Img          = document.getElementById("exp8-method2-img");
+  const m2Audio        = document.getElementById("exp8-method2-audio");
+
+  function updateMethod2() {
+    // interpolation
+    const iIdx = parseInt(m2InterpSlider.value, 10);
+    const iStr = interpolationSteps[iIdx] + "%";
+    m2InterpVal.textContent = iStr;
+    // regularization
+    const rIdx = parseInt(m2RegSlider.value, 10);
+    const rVal = regSteps[rIdx];
+    m2RegVal.textContent = (rVal === 0.000001) ? "1e-6" : rVal;
+    // time-limiting
+    const tIdx = parseInt(m2TimeSlider.value, 10);
+    const tVal = timeSteps[tIdx];
+    m2TimeVal.textContent = tVal;
+
+    const entry = ExpHData.uotData.find(o => 
+      o.interpolation === iStr &&
+      parseFloat(o.regularization) === rVal &&
+      parseInt(o.timelimiting) === tVal
+    );
+    if (entry) {
+      m2Img.src   = entry.imageUrl;
+      m2Audio.src = entry.audioUrl;
+    } else {
+      m2Img.src   = "";
+      m2Audio.src = "";
+    }
+  }
+  m2InterpSlider.addEventListener("input", updateMethod2);
+  m2RegSlider.addEventListener("input", updateMethod2);
+  m2TimeSlider.addEventListener("input", updateMethod2);
+
+  // Init once
+  updateMethod1();
+  updateMethod2();
+}
+
 /** Initialize everything once DOM is ready */
 window.addEventListener("DOMContentLoaded", () => {
   // Call each experiment’s init
@@ -547,4 +622,5 @@ window.addEventListener("DOMContentLoaded", () => {
   initExp5();
   initExp6();
   initExp7();
+  initExp8();
 });

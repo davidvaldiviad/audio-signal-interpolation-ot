@@ -12,6 +12,8 @@
   
   <!-- Page Title -->
   <h1>Audio signal interpolation using optimal transportation of spectrograms</h1>
+  <h2 style="text-align:center;">David Valdivia<sup>1</sup> &emsp; Marien Renaud <sup>2</sup> &emsp; Elsa Cazelles<sup>1,3</sup> &emsp; Cédric Févotte<sup>1,3</sup> </h2>
+  <h3 style="text-align:center;"><sup>1</sup>IRIT, Université de Toulouse &emsp;&emsp;&emsp; <sup>2</sup>IMB, Université de Bordeaux &emsp;&emsp;&emsp; <sup>3</sup>CNRS</h3>
   <p class="subtitle">In our paper, we presented two approaches based on optimal transport (OT) to interpolate between two audio signals (source and target). The first method consists in applying exact OT to the normalized spectrograms of the input signals. The second method relies on the design of a cost matrix that forbids remote displacement of mass in the temporal domain (horizontal axis). This is made possible by relaxing the marginal constraints with unbalanced optimal transport (UOT). We present here results conducted on musical tones and environmental sounds.</p>
 
   <p><b>How to use</b>: Below you can find results for different experiments. Select an experiment by clicking on the table of contents below. There's a <i>Go Top</i> button below to come back here.</p>
@@ -19,7 +21,7 @@
   
   <ul>
     <li>Interpolation parameter: slide between the source and target. Values close to 0% are close to the source and values close to 100% are close to the target.</li>
-    <li>Regularization parameter <b>(only for UOT)</b>: marginal constraint relaxation paramter.</li>
+    <li>UOT hyperparameter <b>(only for UOT)</b>: marginal constraint relaxation paramter.</li>
     <li>Time-limiting parameter <b>(only for UOT)</b>: define for many time frames mass is allowed to go to.</li>
   </ul>
 
@@ -34,6 +36,7 @@
     <a href="#piano-cicada">Piano / Cicada chirp</a>
     <a href="#piano-water">Piano / Water flow</a>
     <a href="#piano-forte">Piano piano vs Piano forte</a>
+    <a href="#piano-drop">Piano vs Water drop</a>
   </nav>
   
   <!-- ==== EXPERIMENT 1 ==== -->
@@ -91,8 +94,8 @@
           <span class="slider-value" id="exp1-m2-interp-val"></span>
         </div>
         <div class="slider-container">
-          <label>Regularization:</label>
-          <input type="range" id="exp1-m2-reg" min="0" max="3" value="0">
+          <label>UOT hyperparameter:</label>
+          <input type="range" id="exp1-m2-reg" min="0" max="3" value="1">
           <span class="slider-value" id="exp1-m2-reg-val"></span>
         </div>
         <div class="slider-container">
@@ -142,8 +145,8 @@
           <span class="slider-value" id="exp2-m2-interp-val"></span>
         </div>
         <div class="slider-container">
-          <label>Regularization:</label>
-          <input type="range" id="exp2-m2-reg" min="0" max="3" value="0">
+          <label>UOT hyperparameter:</label>
+          <input type="range" id="exp2-m2-reg" min="0" max="3" value="1">
           <span class="slider-value" id="exp2-m2-reg-val"></span>
         </div>
         <div class="slider-container">
@@ -192,8 +195,8 @@
           <span class="slider-value" id="exp3-m2-interp-val"></span>
         </div>
         <div class="slider-container">
-          <label>Regularization:</label>
-          <input type="range" id="exp3-m2-reg" min="0" max="3" value="0">
+          <label>UOT hyperparameter:</label>
+          <input type="range" id="exp3-m2-reg" min="0" max="3" value="1">
           <span class="slider-value" id="exp3-m2-reg-val"></span>
         </div>
         <div class="slider-container">
@@ -242,8 +245,8 @@
           <span class="slider-value" id="exp4-m2-interp-val"></span>
         </div>
         <div class="slider-container">
-          <label>Regularization:</label>
-          <input type="range" id="exp4-m2-reg" min="0" max="3" value="0">
+          <label>UOT hyperparameter:</label>
+          <input type="range" id="exp4-m2-reg" min="0" max="3" value="1">
           <span class="slider-value" id="exp4-m2-reg-val"></span>
         </div>
         <div class="slider-container">
@@ -292,8 +295,8 @@
           <span class="slider-value" id="exp5-m2-interp-val"></span>
         </div>
         <div class="slider-container">
-          <label>Regularization:</label>
-          <input type="range" id="exp5-m2-reg" min="0" max="3" value="0">
+          <label>UOT hyperparameter:</label>
+          <input type="range" id="exp5-m2-reg" min="0" max="3" value="1">
           <span class="slider-value" id="exp5-m2-reg-val"></span>
         </div>
         <div class="slider-container">
@@ -342,8 +345,8 @@
             <span class="slider-value" id="exp6-m2-interp-val"></span>
           </div>
           <div class="slider-container">
-            <label>Regularization:</label>
-            <input type="range" id="exp6-m2-reg" min="0" max="3" value="0">
+            <label>UOT hyperparameter:</label>
+            <input type="range" id="exp6-m2-reg" min="0" max="3" value="1">
             <span class="slider-value" id="exp6-m2-reg-val"></span>
           </div>
           <div class="slider-container">
@@ -392,8 +395,8 @@
               <span class="slider-value" id="exp7-m2-interp-val"></span>
             </div>
             <div class="slider-container">
-              <label>Regularization:</label>
-              <input type="range" id="exp7-m2-reg" min="0" max="3" value="0">
+              <label>UOT hyperparameter:</label>
+              <input type="range" id="exp7-m2-reg" min="0" max="3" value="1">
               <span class="slider-value" id="exp7-m2-reg-val"></span>
             </div>
             <div class="slider-container">
@@ -404,6 +407,56 @@
           </div>
         </div>
         </section>
+
+        <section id="piano-drop">
+          <h2>Piano / Water drop</h2>
+          <p>We interpolate here between a piano note and the sound of a water drop.</p>
+          <div class="experiment-grid" id="exp8-grid">
+            <!-- ... same 2x2 structure, but different IDs, e.g. exp8-source-img, exp8-method1-audio, etc. ... -->
+            <div class="section">
+              <h3>Source</h3>
+              <img id="exp8-source-img" src="" alt="Source Image">
+              <audio id="exp8-source-audio" controls></audio>
+            </div>
+            <div class="section">
+              <h3>Target</h3>
+              <img id="exp8-target-img" src="" alt="Target Image">
+              <audio id="exp8-target-audio" controls></audio>
+            </div>
+            <div class="section">
+              <h3>Exact OT</h3>
+              <img id="exp8-method1-img" src="" alt="Exact OT Image">
+              <audio id="exp8-method1-audio" controls></audio>
+              <!-- Single slider for Interpolation -->
+              <div class="slider-container">
+                <label>Interpolation:</label>
+                <input type="range" id="exp8-m1-interp" min="0" max="4" value="2">
+                <span class="slider-value" id="exp8-m1-interp-val"></span>
+              </div>
+            </div>
+            <div class="section">
+              <h3>Structured cost matrix + UOT</h3>
+              <img id="exp8-method2-img" src="" alt="Structured cost matrix + UOT Image">
+              <audio id="exp8-method2-audio" controls></audio>
+              <!-- 3 sliders -->
+              <div class="slider-container">
+                <label>Interpolation:</label>
+                <input type="range" id="exp8-m2-interp" min="0" max="4" value="2">
+                <span class="slider-value" id="exp8-m2-interp-val"></span>
+              </div>
+              <div class="slider-container">
+                <label>UOT hyperparameter:</label>
+                <input type="range" id="exp8-m2-reg" min="0" max="3" value="1">
+                <span class="slider-value" id="exp8-m2-reg-val"></span>
+              </div>
+              <div class="slider-container">
+                <label>Time-limiting:</label>
+                <input type="range" id="exp8-m2-time" min="0" max="2" value="0">
+                <span class="slider-value" id="exp8-m2-time-val"></span>
+              </div>
+            </div>
+          </div>
+          </section>
 
 </div>
 
@@ -418,6 +471,7 @@
 <script src="piano-cicada.js"></script>
 <script src="piano-water.js"></script>
 <script src="piano-forte.js"></script>
+<script src="piano-drop.js"></script>
 
 <!-- Main JS logic (slider updates, initialization, etc.) -->
 <script src="main.js"></script>
