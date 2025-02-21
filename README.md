@@ -79,7 +79,7 @@ You can find more audio examples in the `examples` folder.
 
 # About the code
 
-The functions used for interpolation are located in the folder `audio_ot`. There you can find the following files:
+The functions used for interpolation are located in the folder `src`. There you can find the following files:
 
 * `audio.py`: load audio recordings, compute spectrograms, ...
 * `exact_ot.py`: compute exact OT between normalized spectrograms and interpolate.
