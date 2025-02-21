@@ -3,4 +3,4 @@ docs/.DS_Store
 tmp.sh
 *.egg-info/
 build/
-.wav
+*.wav
