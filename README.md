@@ -12,13 +12,17 @@ Some results:
 
 # Install
 
-To run the code you must first load the `audio_ot` module:
+To run the code you must clone the project and install the provided `audio_ot` module. 
+
+From a terminal run:
 
 ````
+git clone https://github.com/davidvaldiviad/audio-signal-interpolation-ot.git
+cd audio-signal-interpolation-ot
 pip install .
 ````
 
-This will install other dependecies.
+`pip install .` will use `setup.py` to install the `audio_ot` module and other dependencies.
 
 # Running
 
