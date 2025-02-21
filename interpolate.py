@@ -49,8 +49,10 @@ filepath = args.interpolation_path
 if filepath is None:
     source_title = SOURCE_PATH.split('/')[-1].split('.wav')[0]
     target_title = TARGET_PATH.split('/')[-1].split('.wav')[0]
-
-    filepath = f"{source_title}-{target_title}-method={method}-alpha={alpha}-p={p}-beta={beta}.wav"
+    if method == 'ot':
+        filepath = f"{source_title}-{target_title}-method={method}-alpha={alpha}.wav"
+    if method == 'uot':
+        filepath = f"{source_title}-{target_title}-method={method}-alpha={alpha}-p={p}-beta={beta}.wav"
 
 ############################
 # COMPUTE INTERPOLATION
