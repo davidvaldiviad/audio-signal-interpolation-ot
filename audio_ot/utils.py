@@ -30,13 +30,13 @@ def masked_outer_product(u, v, p, T, F):
 
         row_start = t * F
         row_end   = (t + 1) * F
-        u_slice   = u[row_start : row_end]  # shape (F,)
+        u_slice   = u[row_start : row_end]
 
         col_start = (t - blocks_left) * F
         col_end   = (t + 1 + blocks_right) * F
-        v_slice   = v[col_start : col_end]  # shape (blocks_per_t * F,)
+        v_slice   = v[col_start : col_end]
 
-        sub_block = np.outer(u_slice, v_slice).ravel()  # shape = (F * blocks_per_t*F,)
+        sub_block = np.outer(u_slice, v_slice).ravel()
 
         begin = blocks_seen_so_far * (F**2)
         end   = (blocks_seen_so_far + blocks_per_t) * (F**2)
@@ -55,22 +55,16 @@ def sum_rows_masked(M, p, F, T):
         blocks_to_right = min(p, T - 1 - t)
         blocks_per_row = 1 + blocks_to_left + blocks_to_right
 
-        # The sub-block for row t starts here in the big array:
         chunk_start = blocks_seen_so_far * (F**2)
         chunk_end   = (blocks_seen_so_far + blocks_per_row) * (F**2)
         sub_block   = M[chunk_start:chunk_end]
 
-        # sub_block is shape (blocks_per_row * F^2,)
-        # Reshape to (F, blocks_per_row * F)
         sub_block = sub_block.reshape(F, blocks_per_row * F)
 
-        # Sum each row across all columns:
-        row_sums = sub_block.sum(axis=1)  # shape (F,)
+        row_sums = sub_block.sum(axis=1)
 
-        # Store result
         s[t*F : (t+1)*F] = row_sums
 
-        # Advance offset so next row picks up where we left off
         blocks_seen_so_far += blocks_per_row
 
     return s
@@ -84,24 +78,18 @@ def sum_cols_masked(M, p, F, T):
         blocks_to_right = min(p, T - 1 - t)
         blocks_per_row = 1 + blocks_to_left + blocks_to_right
 
-        # Identify our sub-block slice for row t:
         chunk_start = blocks_seen_so_far * F**2
         chunk_end   = (blocks_seen_so_far + blocks_per_row) * F**2
         sub_block = M[chunk_start : chunk_end]
         sub_block = sub_block.reshape(F, blocks_per_row * F)
 
-        # For each column inside sub_block:
         for col_id in range(blocks_per_row * F):
-            # Map local col_id -> (t2, f2):
             f2 = col_id % F
             delta_t = col_id // F
             t2 = t - blocks_to_left + delta_t
 
-            # The global column index in the masked matrix:
             c = t2 * F + f2
 
-            # sub_block[:, col_id] has shape (F,)
-            # Summation across the row-dimension for this single column:
             column_value = sub_block[:, col_id].sum()
             s[c] += column_value
 
@@ -146,13 +134,13 @@ def masked_outer_sum(u, v, p, T, F):
 
         row_start = t * F
         row_end   = (t + 1) * F
-        u_slice   = u[row_start : row_end]  # shape (F,)
+        u_slice   = u[row_start : row_end]
 
         col_start = (t - blocks_left) * F
         col_end   = (t + 1 + blocks_right) * F
-        v_slice   = v[col_start : col_end]  # shape (blocks_per_t * F,)
+        v_slice   = v[col_start : col_end]
 
-        sub_block = np.add.outer(u_slice, v_slice).ravel()  # shape = (F * blocks_per_t*F,)
+        sub_block = np.add.outer(u_slice, v_slice).ravel()
 
         begin = blocks_seen_so_far * (F**2)
         end   = (blocks_seen_so_far + blocks_per_t) * (F**2)
