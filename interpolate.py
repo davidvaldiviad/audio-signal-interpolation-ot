@@ -1,6 +1,9 @@
 import argparse
 from scipy.io.wavfile import write
-from audio_ot import *
+
+from src.audio import *
+from src.exact_ot import *
+from src.uot import *
 
 #####################
 # PARSING ARGUMENTS #

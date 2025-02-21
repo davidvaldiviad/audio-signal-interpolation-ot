@@ -14,7 +14,7 @@ Some results:
 
 To run the code you must clone the project and install the provided `audio_ot` module. 
 
-To clone the project run in a terminal:
+1) To clone the project run in a terminal:
 
 ````
 git clone https://github.com/davidvaldiviad/audio-signal-interpolation-ot.git
@@ -26,10 +26,18 @@ Then go to the folder:
 cd audio-signal-interpolation-ot
 `````
 
-**Before installing any dependencies we recommend you to create a Python virtual environment.**
+2. **Before installing any dependencies we recommend you create a Python virtual environment:**
 
-Finally run `pip install .` will use `setup.py` to install the `audio_ot` module and other dependencies.
+`````
+python3 -m venv .venv
+source .venv/bin/activate
+`````
 
+3. Finally, install the dependencies:
+
+````
+pip install -r requirements.txt
+````
 
 # Running
 

@@ -4,3 +4,4 @@ tmp.sh
 *.egg-info/
 build/
 *.wav
+.venv/
