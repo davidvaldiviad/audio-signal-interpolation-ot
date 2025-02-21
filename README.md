@@ -66,13 +66,13 @@ Compute interpolation between a cicada's chirp and flow of water, with exact ot 
 
 
 ````
-python3 interpolate.py examples/cicada.wav examples/water.wav ot --alpha 0.8
+python3 interpolate.py examples/cicada.wav examples/water.wav ot --alpha 0.8 --verbose 2
 ````
 
-Compute interpolation between guitar and piano notes with uot, an interpolation parameter of 80%, a time limiting parameter of 1 and a uot hyperparameter of 1 (default). Save it into `interpolation.wav`.
+Compute interpolation between guitar and piano notes with uot, an interpolation parameter of 50%, a time limiting parameter of 0 and a uot hyperparameter of 1 (default). Save it into `interpolation.wav`.
 
 `````
-python3 interpolate.py examples/cicada.wav examples/water.wav  uot --interpolation_path interpolation.wav --alpha 0.8 --p 1
+python3 interpolate.py examples/guitar_notes.wav examples/piano_notes.wav  uot --interpolation_path interpolation.wav --alpha 0.5 --p 0 --verbose 2
 `````
 
 You can find more audio examples in the `examples` folder.
