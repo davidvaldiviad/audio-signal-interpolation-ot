@@ -2,7 +2,7 @@
 
 This code implements a novel approach for generating an artificial audio signal that interpolates between given source and target sounds. Our approach relies on the computation of Wasserstein barycenters of the source and target spectrograms, followed by phase reconstruction and inversion. An other contribution is to endow the transportation cost matrix with a specific structure that prohibits remote displacements of energy along the time axis, and for which optimal transport is made possible by leveraging the unbalanced transport framework. 
 
-This code is associated to the paper Audio signal interpolation using optimal transportation of spectrograms. (**link to arxiv**)
+This code is associated to the paper Audio signal interpolation using optimal transportation of spectrograms, see https://arxiv.org/abs/2502.15430.
 
 You can find an [interactive webpage](https://davidvaldiviad.github.io/audio-signal-interpolation-ot) with interpolations obtained with our proposed methods applied on different types of sounds.
 
